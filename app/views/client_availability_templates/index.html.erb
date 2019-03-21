@@ -16,7 +16,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
-      <tr>
+      <tr align="center">
         <th>
           Week of
         </th>
@@ -36,7 +36,7 @@
       </tr>
 
       <% @slots.each do |slot| %>
-      <tr>
+      <tr align="center">
         <td>
           <%= slot.week.week_of %>
         </td>
@@ -49,8 +49,8 @@
           <% client_availability = slot.client_availabilities.find_by(client_id: client.id) %>
           <% if client_availability %>
               <td>
-                <a href="/delete_client_availability/<%= client_availability.id %>" class="btn btn-block btn-danger">
-                  Remove Availability
+                <a href="/delete_client_availability/<%= client_availability.id %>">
+                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
                 </a>
               </td>
           <% else %>
@@ -58,8 +58,8 @@
                 <form action="/create_client_availability" method="post">
                   <input type="hidden" name="client_id" value="<%= client.id %>">
                   <input type="hidden" name="slot_id" value="<%= slot.id %>">
-                  <button class="btn btn-block btn-success">
-                    Add Availability
+                  <button class="btn btn-block btn-light">
+                    Add
                   </button>
                 </form>
               </td>

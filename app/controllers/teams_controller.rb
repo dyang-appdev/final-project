@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     if @team.valid?
       @team.save
 
-      redirect_back(:fallback_location => "/teams", :notice => "Team created successfully.")
+      redirect_to("/teams", :notice => "Team created successfully.")
     else
       render("team_templates/new_form_with_errors.html.erb")
     end
@@ -42,14 +42,14 @@ class TeamsController < ApplicationController
   def update_row
     @team = Team.find(params.fetch("id_to_modify"))
 
-    @team.client_id = params.fetch("client_id")
-    @team.bcba_id = params.fetch("bcba_id")
-    @team.rbt_id = params.fetch("rbt_id")
+    @team.client_id = params.fetch("client_name")
+    @team.bcba_id = params.fetch("bcba_name")
+    @team.rbt_id = params.fetch("rbt_name")
 
     if @team.valid?
       @team.save
 
-      redirect_to("/teams/#{@team.id}", :notice => "Team updated successfully.")
+      redirect_to("/teams", :notice => "Team updated successfully.")
     else
       render("team_templates/edit_form_with_errors.html.erb")
     end
@@ -60,6 +60,6 @@ class TeamsController < ApplicationController
 
     @team.destroy
 
-    redirect_to("/teams", :notice => "Team deleted successfully.")
+    redirect_back(:fallback_location => "/teams", :notice => "Team deleted successfully.")
   end
 end

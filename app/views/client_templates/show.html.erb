@@ -65,14 +65,19 @@
       </dt>
       <% bcba_array = [] %>
       <% @client.teams.each do |team| %>
-      <!--Add BCBA into an array-->
-        <% bcba_array.push(team.bcba.full_name) %> 
+        <!--Add BCBA into an array-->
+        <% bcba_array.push(team.bcba) %> 
       <% end %>
       <!--Now each BCBA in this array is unique and there are no duplicates-->
+      <% bcba_array.uniq.each do |bcba| %> 
+      <% team_id = Team.find_by(client_id: @client.id, bcba_id: bcba.id).id %>
       <dd>
-        <% bcba_array.uniq %> 
+        <a href="/bcbas/<%= bcba.id %>">
+          <%= bcba.full_name %>
+          <a href="/delete_team/<%= team_id %>"><small class="text-muted">Remove</small></a>
+        </a>
       </dd>
-
+      <% end %>
       
       <dt>
         Assigned RBT
@@ -81,11 +86,15 @@
       <dd>
         <a href="/rbts/<%= team.rbt_id %>">
           <%= team.rbt.full_name %>
+          <a href="/delete_team/<%= team.id %>"><small class="text-muted">Remove</small></a>
         </a>
       </dd>
       <% end %>
     </dl>
     
+    <a href="/teams/new">Add a new team member</a>
+  
+    <br>
     <br>
     
     <div class="row mb-3">

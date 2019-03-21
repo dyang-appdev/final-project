@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "weeks#index"
+  root "slots#index"
 
   #------------------------------
 

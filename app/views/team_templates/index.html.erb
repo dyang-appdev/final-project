@@ -32,6 +32,12 @@
         <th>
           RBT
         </th>
+        
+        <th>
+        </th>
+
+        <th>
+        </th>
 
       </tr>
 
@@ -39,7 +45,7 @@
       <tr>
         <td>
           <a href="/teams/<%= team.id %>">
-          <%= team.id %>
+            <%= team.id %>
           </a>
         </td>
 
@@ -58,6 +64,18 @@
         <td>
           <a href="rbts/<%= team.rbt.id %>">
             <%= team.rbt.full_name %>
+          </a>
+        </td>
+        
+        <td>
+          <a href="/teams/<%= team.id %>/edit">
+            Edit
+          </a>
+        </td>
+        
+        <td>
+          <a href="/delete_team/<%= team.id %>">
+            Delete
           </a>
         </td>
       </tr>

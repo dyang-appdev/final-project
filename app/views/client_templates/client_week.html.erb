@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      Client: <%= @client.full_name %>, Team Availability Week of <%= @week.week_of %>
+      Client: <a href="/clients/<%= @client.id %>"><%= @client.full_name %></a>, Team Availability Week of <%= @week.week_of %>
     </h1>
 
   </div>
@@ -18,48 +18,52 @@
         </th>
         
         <th>
-          Client Available?
-        </th>
-        
-        <th>
           Client Action
         </th>
         
         <% @client.teams.each do |team| %>
         <th>
-          <%= team.rbt.full_name %> Available?
-        </th>
-        <th>
-          <%= team.rbt.full_name %> Action
+          <a href="/rbts/<%= team.rbt_id %>">
+            <%= team.rbt.full_name %>
+          </a>
         </th>
         <% end %>
+
+        <% bcba_array = [] %>
+        <% @client.teams.each do |team| %>
+          <!--Add BCBA into an array-->
+          <% bcba_array.push(team.bcba) %> 
+        <% end %>
+        <!--Now each BCBA in this array is unique and there are no duplicates-->
+        <% bcba_array.uniq.each do |bcba| %>  
+        <th>
+          <a href="/bcbas/<%= bcba.id %>">
+            <%= bcba.full_name %>
+          </a>
+        </th>
+        <% end %>
+      
       </tr>
 
       <% @slots.each do |slot| %>
-        <tr>
+        <tr align="center">
           <td>
             <%= slot.slot_start.strftime("%a %-I:%M %P") %>
           </td>
           
             <% client_availability = slot.client_availabilities.find_by(client_id: @client.id) %>        
             <% if client_availability %>
-              <td align="center">
-                <i class="fas fa-check"></i>
-              </td>
               <td>
-                <a href="/delete_client_availability/<%= client_availability.id %>" class="btn btn-block btn-secondary">
-                  Remove
+                <a href="/delete_client_availability/<%= client_availability.id %>">
+                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
                 </a>
               </td>
             <% else %>
-              <td align="center">
-                
-              </td>
               <td>
                 <form action="/create_client_availability" method="post">
                   <input type="hidden" name="client_id" value="<%= @client.id %>">
                   <input type="hidden" name="slot_id" value="<%= slot.id %>">
-                  <button class="btn btn-block btn-primary">
+                  <button class="btn btn-block btn-light">
                     Add
                   </button>
                 </form>
@@ -69,29 +73,45 @@
           <% @client.teams.each do |team| %>
             <% rbt_availability = slot.rbt_availabilities.find_by(rbt_id: team.rbt.id) %>
             <% if rbt_availability %>
-              <td align="center">
-                <i class="fas fa-check"></i>
-              </td>
               <td>
-                <a href="/delete_rbt_availability/<%= rbt_availability.id %>" class="btn btn-block btn-secondary">
-                  Remove
+                <a href="/delete_rbt_availability/<%= rbt_availability.id %>">
+                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
                 </a>
               </td>
             <% else %>
-              <td align="center">
-                
-              </td>
               <td>
                 <form action="/create_rbt_availability" method="post">
                   <input type="hidden" name="rbt_id" value="<%= team.rbt.id %>">
                   <input type="hidden" name="slot_id" value="<%= slot.id %>">
-                  <button class="btn btn-block btn-primary">
+                  <button class="btn btn-block btn-light">
                     Add
                   </button>
                 </form>
               </td>
             <% end %>
           <% end %>
+
+          <% @client.teams.each do |team| %>
+            <% bcba_availability = slot.bcba_availabilities.find_by(bcba_id: team.bcba.id) %>
+            <% if bcba_availability %>
+              <td>
+                <a href="/delete_bcba_availability/<%= bcba_availability.id %>">
+                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
+                </a>
+              </td>
+            <% else %>
+              <td>
+                <form action="/create_bcba_availability" method="post">
+                  <input type="hidden" name="bcba_id" value="<%= team.bcba.id %>">
+                  <input type="hidden" name="slot_id" value="<%= slot.id %>">
+                  <button class="btn btn-block btn-light">
+                    Add
+                  </button>
+                </form>
+              </td>
+            <% end %>
+          <% end %>
+
         </tr>
       <% end %>
     </table>

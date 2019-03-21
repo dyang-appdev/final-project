@@ -60,6 +60,6 @@ class RbtAvailabilitiesController < ApplicationController
 
     @rbt_availability.destroy
 
-    redirect_to("/rbt_availabilities", :notice => "Rbt availability deleted successfully.")
+    redirect_back(:fallback_location => "/rbt_availabilities", :notice => "Rbt availability deleted successfully.")
   end
 end

@@ -16,7 +16,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
-      <tr>
+      <tr align="center">
         <th>
           Week of
         </th>
@@ -36,7 +36,7 @@
       </tr>
 
       <% @slots.each do |slot| %>
-      <tr>
+      <tr align="center">
         <td>
           <%= slot.week.week_of %>
         </td>
@@ -49,8 +49,8 @@
           <% bcba_availability = slot.bcba_availabilities.find_by(bcba_id: bcba.id) %>
           <% if bcba_availability %>
               <td>
-                <a href="/delete_bcba_availability/<%= bcba_availability.id %>" class="btn btn-block btn-secondary">
-                  Remove
+                <a href="/delete_bcba_availability/<%= bcba_availability.id %>">
+                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
                 </a>
               </td>
           <% else %>
@@ -58,7 +58,7 @@
                 <form action="/create_bcba_availability" method="post">
                   <input type="hidden" name="bcba_id" value="<%= bcba.id %>">
                   <input type="hidden" name="slot_id" value="<%= slot.id %>">
-                  <button class="btn btn-block btn-primary">
+                  <button class="btn btn-block btn-light">
                     Add
                   </button>
                 </form>

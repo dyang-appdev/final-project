@@ -60,6 +60,6 @@ class BcbaAvailabilitiesController < ApplicationController
 
     @bcba_availability.destroy
 
-    redirect_to("/bcba_availabilities", :notice => "Bcba availability deleted successfully.")
+    redirect_back(:fallback_location => "/bcba_availabilities", :notice => "Bcba availability deleted successfully.")
   end
 end

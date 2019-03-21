@@ -20,6 +20,7 @@ class RbtsController < ApplicationController
   def create_row
     @rbt = Rbt.new
 
+    @rbt.full_name = params.fetch("full_name")
     @rbt.bcba_id = params.fetch("bcba_name")
     @rbt.service_location = params.fetch("service_location")
     @rbt.address = params.fetch("address")
@@ -27,7 +28,7 @@ class RbtsController < ApplicationController
     if @rbt.valid?
       @rbt.save
 
-      redirect_back(:fallback_location => "/rbts", :notice => "Rbt created successfully.")
+      redirect_to("/rbts", :notice => "RBT created successfully.")
     else
       render("rbt_templates/new_form_with_errors.html.erb")
     end
@@ -49,7 +50,7 @@ class RbtsController < ApplicationController
     if @rbt.valid?
       @rbt.save
 
-      redirect_to("/rbts/#{@rbt.id}", :notice => "Rbt updated successfully.")
+      redirect_to("/rbts/#{@rbt.id}", :notice => "RBT updated successfully.")
     else
       render("rbt_templates/edit_form_with_errors.html.erb")
     end
@@ -60,6 +61,6 @@ class RbtsController < ApplicationController
 
     @rbt.destroy
 
-    redirect_to("/rbts", :notice => "Rbt deleted successfully.")
+    redirect_to("/rbts", :notice => "RBT deleted successfully.")
   end
 end

@@ -29,36 +29,23 @@
         Client
       </dt>
       <dd>
-        <%= @team.client_id %>
+        <%= @team.client.full_name %>
       </dd>
 
       <dt>
         Bcba
       </dt>
       <dd>
-        <%= @team.bcba_id %>
+        <%= @team.bcba.full_name %>
       </dd>
 
       <dt>
         Rbt
       </dt>
       <dd>
-        <%= @team.rbt_id %>
+        <%= @team.rbt.full_name %>
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@team.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@team.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>

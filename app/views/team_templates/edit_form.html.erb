@@ -7,27 +7,27 @@
 <form action="/update_team/<%= @team.id %>" method="post">
 
   <div class="form-group">
-    <label for="client_id">
+    <label for="client_name">
       Client
     </label>
 
-    <input type="text" id="client_id" name="client_id" class="form-control" value="<%= @team.client_id %>">
+    <%= select_tag("client_name", options_from_collection_for_select(Client.all, :id, :full_name), :class => "form-control") %>
   </div>
 
   <div class="form-group">
-    <label for="bcba_id">
-      Bcba
+    <label for="bcba_name">
+      BCBA
     </label>
 
-    <input type="text" id="bcba_id" name="bcba_id" class="form-control" value="<%= @team.bcba_id %>">
+    <%= select_tag("bcba_name", options_from_collection_for_select(Bcba.all, :id, :full_name), :class => "form-control") %>
   </div>
 
   <div class="form-group">
-    <label for="rbt_id">
-      Rbt
+    <label for="rbt_name">
+      RBT
     </label>
 
-    <input type="text" id="rbt_id" name="rbt_id" class="form-control" value="<%= @team.rbt_id %>">
+    <%= select_tag("rbt_name", options_from_collection_for_select(Rbt.all, :id, :full_name), :class => "form-control") %>
   </div>
 
   <button class="btn btn-block btn-outline-secondary">
