@@ -1,0 +1,47 @@
+<h1>
+  Add a new team
+</h1>
+
+
+<hr>
+
+<form action="/create_team" method="post">
+
+  <div class="form-group">
+    <label for="client_name">
+      Client
+    </label>
+    
+    <%= select_tag("client_name", options_from_collection_for_select(Client.all, :id, :full_name), :class => "form-control") %>
+    or <a href="/clients/new">add a new client</a> first
+    
+  </div>
+
+  <div class="form-group">
+    <label for="bcba_name">
+      BCBA
+    </label>
+
+    <%= select_tag("bcba_name", options_from_collection_for_select(Bcba.all, :id, :full_name), :class => "form-control") %>
+    or <a href="/bcbas/new">add a new BCBA</a> first
+  </div>
+
+  <div class="form-group">
+    <label for="rbt_name">
+      RBT
+    </label>
+    
+    <%= select_tag("rbt_name", options_from_collection_for_select(Rbt.all, :id, :full_name), :class => "form-control") %>
+    or <a href="/bcbas/new">add a new RBT</a> first
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create team
+  </button>
+</form>
+
+<hr>
+
+<a href="/teams">
+  Go back
+</a>

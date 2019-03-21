@@ -1,0 +1,77 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All Clients
+    </h1>
+
+    <a href="/clients/new" class="btn btn-block btn-outline-secondary">
+      Add a new client
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Full Name
+        </th>
+
+        <th>
+          Address
+        </th>
+
+        <th>
+          Age band
+        </th>
+
+        <th>
+          Functioning status
+        </th>
+
+        <th>
+          Service location
+        </th>
+      </tr>
+
+      <% @clients.each do |client| %>
+      <tr>
+        <td>
+            <%= client.id %>
+        </td>
+        
+        <td>
+          <a href="/clients/<%= client.id %>">
+            <%= client.full_name %>
+          </a>
+        </td>
+
+        <td>
+          <%= client.address %>
+        </td>
+
+        <td>
+          <%= client.age_band %>
+        </td>
+
+        <td>
+          <%= client.functioning_status %>
+        </td>
+
+        <td>
+          <%= client.service_location %>
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

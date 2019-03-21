@@ -1,0 +1,54 @@
+<!-- Validation failure messages -->
+<% if @slot.present? %>
+  <% if @slot.errors.any? %>
+    <% @slot.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new slot
+</h1>
+
+
+<hr>
+
+<form action="/create_slot" method="post">
+
+  <div class="form-group">
+    <label for="slot_start">
+      Slot start
+    </label>
+
+    <input type="text" id="slot_start" name="slot_start" class="form-control" value="<%= @slot.slot_start %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_end">
+      Slot end
+    </label>
+
+    <input type="text" id="slot_end" name="slot_end" class="form-control" value="<%= @slot.slot_end %>">
+  </div>
+
+  <div class="form-group">
+    <label for="week_id">
+      Week
+    </label>
+
+    <input type="text" id="week_id" name="week_id" class="form-control" value="<%= @slot.week_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create slot
+  </button>
+</form>
+
+<hr>
+
+<a href="/slots">
+  Go back
+</a>

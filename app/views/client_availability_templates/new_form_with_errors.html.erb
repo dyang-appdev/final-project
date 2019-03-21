@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @client_availability.present? %>
+  <% if @client_availability.errors.any? %>
+    <% @client_availability.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new client availability
+</h1>
+
+
+<hr>
+
+<form action="/create_client_availability" method="post">
+
+  <div class="form-group">
+    <label for="client_id">
+      Client
+    </label>
+
+    <input type="text" id="client_id" name="client_id" class="form-control" value="<%= @client_availability.client_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_id">
+      Slot
+    </label>
+
+    <input type="text" id="slot_id" name="slot_id" class="form-control" value="<%= @client_availability.slot_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create client availability
+  </button>
+</form>
+
+<hr>
+
+<a href="/client_availabilities">
+  Go back
+</a>

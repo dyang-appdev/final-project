@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All BCBA availabilities
+    </h1>
+
+    <!--<a href="/bcba_availabilities/new" class="btn btn-block btn-outline-secondary">-->
+    <!--  Add a new BCBA availability-->
+    <!--</a>-->
+  </div>
+</div>
+
+
+<!--<hr>-->
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          Week of
+        </th>
+
+        <th>
+          Slot start
+        </th>
+
+        <% @bcbas.each do |bcba| %>
+        <th>
+          <a href="/bcbas/<%= bcba.id %>">
+            <%= bcba.full_name %>
+          </a>
+        </th>
+        <% end %>
+
+      </tr>
+
+      <% @slots.each do |slot| %>
+      <tr>
+        <td>
+          <%= slot.week.week_of %>
+        </td>
+
+        <td>
+          <%= slot.slot_start.strftime("%a %-I:%M %P") %>
+        </td>
+
+        <% @bcbas.each do |bcba| %>
+          <% bcba_availability = slot.bcba_availabilities.find_by(bcba_id: bcba.id) %>
+          <% if bcba_availability %>
+              <td>
+                <a href="/delete_bcba_availability/<%= bcba_availability.id %>" class="btn btn-block btn-secondary">
+                  Remove
+                </a>
+              </td>
+          <% else %>
+              <td>
+                <form action="/create_bcba_availability" method="post">
+                  <input type="hidden" name="bcba_id" value="<%= bcba.id %>">
+                  <input type="hidden" name="slot_id" value="<%= slot.id %>">
+                  <button class="btn btn-block btn-primary">
+                    Add
+                  </button>
+                </form>
+              </td>
+          <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

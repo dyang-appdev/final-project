@@ -1,0 +1,50 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All weeks
+    </h1>
+
+    <a href="/weeks/new" class="btn btn-block btn-outline-secondary">
+      Add a new week
+    </a>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Week of
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @weeks.each do |week| %>
+      <tr>
+        <td>
+          <%= week.id %>
+        </td>
+
+        <td>
+          <%= week.week_of %>
+        </td>
+
+        <td>
+          <a href="/weeks/<%= week.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

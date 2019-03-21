@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All rbt availabilities
+    </h1>
+
+    <!--<a href="/rbt_availabilities/new" class="btn btn-block btn-outline-secondary">-->
+    <!--  Add a new rbt availability-->
+    <!--</a>-->
+  </div>
+</div>
+
+
+<!--<hr>-->
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          Week of
+        </th>
+
+        <th>
+          Slot start
+        </th>
+
+        <% @rbts.each do |rbt| %>
+        <th>
+          <a href="/rbt/<%= rbt.id %>">
+            <%= rbt.full_name %>
+          </a>
+        </th>
+        <% end %>
+
+      </tr>
+
+      <% @slots.each do |slot| %>
+      <tr>
+        <td>
+          <%= slot.week.week_of %>
+        </td>
+
+        <td>
+          <%= slot.slot_start.strftime("%a %-I:%M %P") %>
+        </td>
+
+        <% @rbts.each do |rbt| %>
+          <% rbt_availability = slot.rbt_availabilities.find_by(rbt_id: rbt.id) %>
+          <% if rbt_availability %>
+              <td>
+                <a href="/delete_rbt_availability/<%= rbt_availability.id %>" class="btn btn-block btn-secondary">
+                  Remove
+                </a>
+              </td>
+          <% else %>
+              <td>
+                <form action="/create_rbt_availability" method="post">
+                  <input type="hidden" name="rbt_id" value="<%= rbt.id %>">
+                  <input type="hidden" name="slot_id" value="<%= slot.id %>">
+                  <button class="btn btn-block btn-primary">
+                    Add
+                  </button>
+                </form>
+              </td>
+          <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

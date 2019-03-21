@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221161615) do
+ActiveRecord::Schema.define(version: 20190319162636) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,76 @@ ActiveRecord::Schema.define(version: 20180221161615) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "bcba_availabilities", force: :cascade do |t|
+    t.integer "bcba_id"
+    t.integer "slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bcbas", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "full_name"
+  end
+
+  create_table "client_availabilities", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "address"
+    t.string "age_band"
+    t.string "functioning_status"
+    t.string "service_location"
+    t.integer "insurance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "full_name"
+  end
+
+  create_table "rbt_availabilities", force: :cascade do |t|
+    t.integer "rbt_id"
+    t.integer "slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rbts", force: :cascade do |t|
+    t.integer "bcba_id"
+    t.string "service_location"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "full_name"
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.datetime "slot_start"
+    t.datetime "slot_end"
+    t.integer "week_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "bcba_id"
+    t.integer "rbt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.date "week_of"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

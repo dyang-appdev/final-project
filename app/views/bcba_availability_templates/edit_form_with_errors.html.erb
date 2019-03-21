@@ -1,0 +1,42 @@
+<% if @bcba_availability.errors.any? %>
+  <% @bcba_availability.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit bcba availability #<%= @bcba_availability.id %>
+</h1>
+
+<hr>
+
+<form action="/update_bcba_availability/<%= @bcba_availability.id %>" method="post">
+
+  <div class="form-group">
+    <label for="bcba_id">
+      Bcba
+    </label>
+
+    <input type="text" id="bcba_id" name="bcba_id" class="form-control" value="<%= @bcba_availability.bcba_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_id">
+      Slot
+    </label>
+
+    <input type="text" id="slot_id" name="slot_id" class="form-control" value="<%= @bcba_availability.slot_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update bcba availability
+  </button>
+</form>
+
+<hr>
+
+<a href="/bcba_availabilities">
+  Go back
+</a>

@@ -1,0 +1,65 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Slot #<%= @slot.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/slots" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/slots/<%= @slot.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit slot
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_slot/<%= @slot.id %>" class="btn btn-block btn-outline-secondary">
+          Delete slot
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Slot start
+      </dt>
+      <dd>
+        <%= @slot.slot_start %>
+      </dd>
+
+      <dt>
+        Slot end
+      </dt>
+      <dd>
+        <%= @slot.slot_end %>
+      </dd>
+
+      <dt>
+        Week
+      </dt>
+      <dd>
+        <%= @slot.week_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@slot.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@slot.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

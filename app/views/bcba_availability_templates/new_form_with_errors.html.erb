@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @bcba_availability.present? %>
+  <% if @bcba_availability.errors.any? %>
+    <% @bcba_availability.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new bcba availability
+</h1>
+
+
+<hr>
+
+<form action="/create_bcba_availability" method="post">
+
+  <div class="form-group">
+    <label for="bcba_id">
+      Bcba
+    </label>
+
+    <input type="text" id="bcba_id" name="bcba_id" class="form-control" value="<%= @bcba_availability.bcba_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_id">
+      Slot
+    </label>
+
+    <input type="text" id="slot_id" name="slot_id" class="form-control" value="<%= @bcba_availability.slot_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create bcba availability
+  </button>
+</form>
+
+<hr>
+
+<a href="/bcba_availabilities">
+  Go back
+</a>

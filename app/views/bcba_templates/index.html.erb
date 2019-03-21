@@ -1,0 +1,60 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All BCBAs
+    </h1>
+
+    <a href="/bcbas/new" class="btn btn-block btn-outline-secondary">
+      Add a new BCBA
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          BCBA Full Name
+        </th>
+
+        <th>
+          Address
+        </th>
+
+        <th>
+          # of Clients
+        </th>
+        
+        <th>
+          # of RBTs
+        </th>
+      </tr>
+
+      <% @bcbas.each do |bcba| %>
+      <tr>
+        <td>
+          <a href="/bcbas/<%= bcba.id %>">
+            <%= bcba.full_name %>
+          </a>
+        </td>
+
+        <td>
+          <%= bcba.address %>
+        </td>
+
+        <td>
+          <%= bcba.teams.count %>
+        </td>
+
+        <td>
+          <%= bcba.rbts.count %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

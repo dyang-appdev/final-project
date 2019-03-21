@@ -1,0 +1,71 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All RBTs
+    </h1>
+
+    <a href="/rbts/new" class="btn btn-block btn-outline-secondary">
+      Add a new RBT
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          RBT Full Name
+        </th>
+        
+        <th>
+          BCBA Supervisor
+        </th>
+        
+        <th>
+          Service location
+        </th>
+
+        <th>
+          Home Address
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @rbts.each do |rbt| %>
+      <tr>
+        <td>
+          <a href="/rbts/<%= rbt.id %>">
+            <%= rbt.full_name %>
+          </a>
+        </td>
+        
+        <td>
+          <a href="/bcbas/<%= rbt.bcba_id %>">
+            <%= rbt.bcba.full_name %>
+          </a>
+        </td>
+
+        <td>
+            <%= rbt.service_location %>
+        </td>
+
+        <td>
+          <%= rbt.address %>
+        </td>
+
+        <td>
+          <a href="/rbts/<%= rbt.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

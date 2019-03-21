@@ -1,0 +1,45 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Client availability #<%= @client_availability.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/client_availabilities" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/client_availabilities/<%= @client_availability.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit client availability
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_client_availability/<%= @client_availability.id %>" class="btn btn-block btn-outline-secondary">
+          Delete client availability
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Client
+      </dt>
+      <dd>
+        <%= @client_availability.client.full_name %>
+      </dd>
+
+      <dt>
+        Slot
+      </dt>
+      <dd>
+        <%= @client_availability.slot_id %>
+      </dd>
+
+    </dl>
+  </div>
+</div>
+

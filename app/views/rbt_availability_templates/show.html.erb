@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Rbt availability #<%= @rbt_availability.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/rbt_availabilities" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/rbt_availabilities/<%= @rbt_availability.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit rbt availability
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_rbt_availability/<%= @rbt_availability.id %>" class="btn btn-block btn-outline-secondary">
+          Delete rbt availability
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Rbt
+      </dt>
+      <dd>
+        <%= @rbt_availability.rbt_id %>
+      </dd>
+
+      <dt>
+        Slot
+      </dt>
+      <dd>
+        <%= @rbt_availability.slot_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@rbt_availability.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@rbt_availability.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

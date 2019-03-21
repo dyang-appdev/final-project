@@ -1,0 +1,44 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Bcba availability #<%= @bcba_availability.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/bcba_availabilities" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/bcba_availabilities/<%= @bcba_availability.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit bcba availability
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_bcba_availability/<%= @bcba_availability.id %>" class="btn btn-block btn-outline-secondary">
+          Delete bcba availability
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Bcba
+      </dt>
+      <dd>
+        <%= @bcba_availability.bcba_id %>
+      </dd>
+
+      <dt>
+        Slot
+      </dt>
+      <dd>
+        <%= @bcba_availability.slot_id %>
+      </dd>
+    </dl>
+  </div>
+</div>
+

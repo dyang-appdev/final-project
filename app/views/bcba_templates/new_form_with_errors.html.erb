@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @bcba.present? %>
+  <% if @bcba.errors.any? %>
+    <% @bcba.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new BCBA
+</h1>
+
+
+<hr>
+
+<form action="/create_bcba" method="post">
+
+  <div class="form-group">
+    <label for="full_name">
+      Full Name
+    </label>
+
+    <input type="text" id="full_name" name="full_name" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="address">
+      Address
+    </label>
+
+    <input type="text" id="address" name="address" class="form-control" value="<%= @bcba.address %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create BCBA
+  </button>
+</form>
+
+<hr>
+
+<a href="/bcbas">
+  Go back
+</a>

@@ -1,0 +1,82 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      BCBA Profile: <%= @bcba.full_name %>
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/bcbas" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/bcbas/<%= @bcba.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit BCBA
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_bcba/<%= @bcba.id %>" class="btn btn-block btn-outline-secondary">
+          Delete BCBA
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Full Name
+      </dt>
+      <dd>
+        <%= @bcba.full_name %>
+      </dd>
+      <dt>
+        Address
+      </dt>
+      <dd>
+        <%= @bcba.address %>
+      </dd>
+    </dl>
+
+
+    <table class="table">
+      <tr>
+        <th>
+          Clients (<%= @bcba.teams.count %>)
+
+        </th>
+      </tr>
+
+      <% @bcba.teams.each do |team| %>
+      <tr>
+        <td>
+          <a href="/clients/<%=team.client_id%>">
+            <%= team.client.full_name %>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <table class="table">
+      <tr>
+        <th>
+          Supervised RBTs (<%= @bcba.rbts.count %>)
+        </th>
+      </tr>
+
+      <% @bcba.rbts.each do |rbt| %>
+      <tr>
+        <td>
+          <a href="/rbts/<%=rbt.id%>">
+            <%= rbt.full_name %>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    
+  </div>
+</div>
+

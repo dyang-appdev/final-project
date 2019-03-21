@@ -1,0 +1,67 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All teams
+    </h1>
+
+    <a href="/teams/new" class="btn btn-block btn-outline-secondary">
+      Add a new team
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          Team ID
+        </th>
+
+        <th>
+          Client
+        </th>
+
+        <th>
+          BCBA
+        </th>
+
+        <th>
+          RBT
+        </th>
+
+      </tr>
+
+      <% @teams.each do |team| %>
+      <tr>
+        <td>
+          <a href="/teams/<%= team.id %>">
+          <%= team.id %>
+          </a>
+        </td>
+
+        <td>
+          <a href="/clients/<%= team.client.id %>">
+            <%= team.client.full_name %>
+          </a>
+        </td>
+
+        <td>
+          <a href="/bcbas/<%= team.bcba.id %>">
+            <%= team.bcba.full_name %>
+          </a>
+        </td>
+
+        <td>
+          <a href="rbts/<%= team.rbt.id %>">
+            <%= team.rbt.full_name %>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Client Profile: <%= @client.full_name %>
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/clients" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/clients/<%= @client.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit client
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_client/<%= @client.id %>" class="btn btn-block btn-outline-secondary">
+          Delete client
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Full Name
+      </dt>
+      <dd>
+        <%= @client.full_name %>
+      </dd>
+      
+      <dt>
+        Address
+      </dt>
+      <dd>
+        <%= @client.address %>
+      </dd>
+
+      <dt>
+        Age band
+      </dt>
+      <dd>
+        <%= @client.age_band %>
+      </dd>
+
+      <dt>
+        Functioning status
+      </dt>
+      <dd>
+        <%= @client.functioning_status %>
+      </dd>
+
+      <dt>
+        Service location
+      </dt>
+      <dd>
+        <%= @client.service_location %>
+      </dd>
+
+      <dt>
+        Assigned BCBA
+      </dt>
+      <% bcba_array = [] %>
+      <% @client.teams.each do |team| %>
+      <!--Add BCBA into an array-->
+        <% bcba_array.push(team.bcba.full_name) %> 
+      <% end %>
+      <!--Now each BCBA in this array is unique and there are no duplicates-->
+      <dd>
+        <% bcba_array.uniq %> 
+      </dd>
+
+      
+      <dt>
+        Assigned RBT
+      </dt>
+      <% @client.teams.each do |team| %>
+      <dd>
+        <a href="/rbts/<%= team.rbt_id %>">
+          <%= team.rbt.full_name %>
+        </a>
+      </dd>
+      <% end %>
+    </dl>
+    
+    <br>
+    
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <table class="table">
+          <tr>
+            <th>
+              Weekly Availability
+            </th>
+            <!--<th>-->
+            <!--  # of Prescribed Hours-->
+            <!--</th>-->
+            <!--<th>-->
+            <!--  Total # Scheduled Hours-->
+            <!--</th>-->
+          </tr>
+
+          <% @weeks.each do |week| %>
+          <tr>
+            <td>
+            <a href="/clients/<%= @client.id %>/weeks/<%= week.id %>">
+              Week of <%= week.week_of %>
+            </a>
+            <!--</td>-->
+            <!--<td>-->
+            <!--  # hrs-->
+            <!--</td>-->
+            <!--<td>-->
+            <!--  # hrs-->
+            <!--</td>-->
+          </tr>
+          <% end %> 
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

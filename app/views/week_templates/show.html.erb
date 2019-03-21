@@ -1,0 +1,38 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Week #<%= @week.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/weeks" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/weeks/<%= @week.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit week
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_week/<%= @week.id %>" class="btn btn-block btn-outline-secondary">
+          Delete week
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Week of
+      </dt>
+      <dd>
+        <%= @week.week_of %>
+      </dd>
+
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,42 @@
+<h1>
+  Edit slot #<%= @slot.id %>
+</h1>
+
+<hr>
+
+<form action="/update_slot/<%= @slot.id %>" method="post">
+
+  <div class="form-group">
+    <label for="slot_start">
+      Slot start
+    </label>
+
+    <input type="text" id="slot_start" name="slot_start" class="form-control" value="<%= @slot.slot_start %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_end">
+      Slot end
+    </label>
+
+    <input type="text" id="slot_end" name="slot_end" class="form-control" value="<%= @slot.slot_end %>">
+  </div>
+
+  <div class="form-group">
+    <label for="week_id">
+      Week
+    </label>
+
+    <input type="text" id="week_id" name="week_id" class="form-control" value="<%= @slot.week_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update slot
+  </button>
+</form>
+
+<hr>
+
+<a href="/slots">
+  Go back
+</a>

@@ -1,0 +1,42 @@
+<% if @client_availability.errors.any? %>
+  <% @client_availability.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit client availability #<%= @client_availability.id %>
+</h1>
+
+<hr>
+
+<form action="/update_client_availability/<%= @client_availability.id %>" method="post">
+
+  <div class="form-group">
+    <label for="client_id">
+      Client
+    </label>
+
+    <input type="text" id="client_id" name="client_id" class="form-control" value="<%= @client_availability.client_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_id">
+      Slot
+    </label>
+
+    <input type="text" id="slot_id" name="slot_id" class="form-control" value="<%= @client_availability.slot_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update client availability
+  </button>
+</form>
+
+<hr>
+
+<a href="/client_availabilities">
+  Go back
+</a>

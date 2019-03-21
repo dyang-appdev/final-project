@@ -1,0 +1,26 @@
+<h1>
+  Edit week #<%= @week.id %>
+</h1>
+
+<hr>
+
+<form action="/update_week/<%= @week.id %>" method="post">
+
+  <div class="form-group">
+    <label for="week_of">
+      Week of
+    </label>
+
+    <input type="text" id="week_of" name="week_of" class="form-control" value="<%= @week.week_of %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update week
+  </button>
+</form>
+
+<hr>
+
+<a href="/weeks">
+  Go back
+</a>

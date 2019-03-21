@@ -1,0 +1,42 @@
+<% if @rbt_availability.errors.any? %>
+  <% @rbt_availability.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit rbt availability #<%= @rbt_availability.id %>
+</h1>
+
+<hr>
+
+<form action="/update_rbt_availability/<%= @rbt_availability.id %>" method="post">
+
+  <div class="form-group">
+    <label for="rbt_id">
+      Rbt
+    </label>
+
+    <input type="text" id="rbt_id" name="rbt_id" class="form-control" value="<%= @rbt_availability.rbt_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="slot_id">
+      Slot
+    </label>
+
+    <input type="text" id="slot_id" name="slot_id" class="form-control" value="<%= @rbt_availability.slot_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update rbt availability
+  </button>
+</form>
+
+<hr>
+
+<a href="/rbt_availabilities">
+  Go back
+</a>

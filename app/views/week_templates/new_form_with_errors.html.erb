@@ -1,0 +1,38 @@
+<!-- Validation failure messages -->
+<% if @week.present? %>
+  <% if @week.errors.any? %>
+    <% @week.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new week
+</h1>
+
+
+<hr>
+
+<form action="/create_week" method="post">
+
+  <div class="form-group">
+    <label for="week_of">
+      Week of
+    </label>
+
+    <input type="text" id="week_of" name="week_of" class="form-control" value="<%= @week.week_of %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create week
+  </button>
+</form>
+
+<hr>
+
+<a href="/weeks">
+  Go back
+</a>

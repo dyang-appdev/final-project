@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      RBT Profile: <%= @rbt.full_name %>
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/rbts" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/rbts/<%= @rbt.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit RBT
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_rbt/<%= @rbt.id %>" class="btn btn-block btn-outline-secondary">
+          Delete RBT
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        RBT Full Name
+      </dt>
+      <dd>
+        <%= @rbt.full_name %>
+      </dd>
+      
+      <dt>
+        BCBA Supervisor
+      </dt>
+      <dd>
+        <a href="/bcbas/<%= @rbt.bcba_id %>">
+          <%= @rbt.bcba.full_name %>
+        </a>
+      </dd>
+
+      <dt>
+        Assigned Clients
+      </dt>
+      <% @rbt.teams.each do |team| %>
+      <dd>
+        <a href="/rbts/<%= team.client_id %>">
+          <%= team.client.full_name %>
+        </a>
+      </dd>
+      <% end %>
+      
+      <dt>
+        Service location
+      </dt>
+      <dd>
+        <%= @rbt.service_location %>
+      </dd>
+
+      <dt>
+        Home Address
+      </dt>
+      <dd>
+        <%= @rbt.address %>
+      </dd>
+
+    </dl>
+  </div>
+</div>
+

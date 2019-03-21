@@ -8,7 +8,8 @@
     <meta charset="utf-8">
 
     <!-- Connect Font Awesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" >
+
 
     <!-- Connect Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -26,8 +27,86 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          Medsemble
+        </a>
+    
+        <div class="collapse navbar-collapse" id="collapsible-nav-links">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-link">
+              <a href="/slots" class="nav-link">Dashboard</a>
+            </li>
 
+            <li class="nav-link">
+              <a href="/teams" class="nav-link">Teams</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clients
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="/clients" class="dropdown-item">
+                  Client Index
+                </a>
+                <a href="/client_availabilities" class="dropdown-item">
+                  Client Availabilities
+                </a>
+              </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                BCBAs
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="/bcbas" class="dropdown-item">
+                  BCBA Index
+                </a>
+                <a href="/bcba_availabilities" class="dropdown-item">
+                  BCBA Availabilities
+                </a>
+              </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                RBTs
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="/rbts" class="dropdown-item">
+                  RBT Index
+                </a>
+                <a href="/rbt_availabilities" class="dropdown-item">
+                  RBT Availabilities
+                </a>
+              </div>
+            </li>            
+            
+          </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <% if notice.present? %>
+        <div class="alert alert-dismissable alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= notice %>
+        </div>
+      <% end %>
+  
+      <% if alert.present? %>
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= alert %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  
     <%= dev_tools if Rails.env.development? %>
+  
   </body>
 </html>

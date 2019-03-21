@@ -1,0 +1,50 @@
+<% if @team.errors.any? %>
+  <% @team.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit team #<%= @team.id %>
+</h1>
+
+<hr>
+
+<form action="/update_team/<%= @team.id %>" method="post">
+
+  <div class="form-group">
+    <label for="client_id">
+      Client
+    </label>
+
+    <input type="text" id="client_id" name="client_id" class="form-control" value="<%= @team.client_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="bcba_id">
+      Bcba
+    </label>
+
+    <input type="text" id="bcba_id" name="bcba_id" class="form-control" value="<%= @team.bcba_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="rbt_id">
+      Rbt
+    </label>
+
+    <input type="text" id="rbt_id" name="rbt_id" class="form-control" value="<%= @team.rbt_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update team
+  </button>
+</form>
+
+<hr>
+
+<a href="/teams">
+  Go back
+</a>

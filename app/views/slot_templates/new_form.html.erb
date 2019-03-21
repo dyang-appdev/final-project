@@ -1,0 +1,56 @@
+<h1>
+  Add a new slot
+</h1>
+
+
+<hr>
+
+<form action="/create_slot" method="post">
+
+  <div class="form-group">
+    <label for="slot_start">
+      Slot start
+    </label>
+
+    <input type="text" id="slot_start" name="slot_start" class="form-control">
+        <!--<div class="input-group date" id="slot_start" data-target-input="nearest">-->
+        <!--    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>-->
+        <!--    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">-->
+        <!--        <div class="input-group-text"><i class="fa fa-calendar"></i></div>-->
+        <!--    </div>-->
+        <!--</div>-->
+
+        <!--<script type="text/javascript">-->
+        <!--    $(function () {-->
+        <!--        $('#datetimepicker1').datetimepicker();-->
+        <!--    });-->
+        <!--</script>-->
+    <!--</div>-->
+  </div>
+
+  <div class="form-group">
+    <label for="slot_end">
+      Slot end
+    </label>
+
+    <input type="text" id="slot_end" name="slot_end" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="week_id">
+      Week
+    </label>
+
+    <input type="text" id="week_id" name="week_id" class="form-control">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create slot
+  </button>
+</form>
+
+<hr>
+
+<a href="/slots">
+  Go back
+</a>
