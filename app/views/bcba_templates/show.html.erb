@@ -43,16 +43,20 @@
     <table class="table">
       <tr>
         <th>
-          Clients (<%= @bcba.teams.count %>)
-
+          <% client_array = [] %>
+          <% @bcba.teams.each do |team| %>
+            <% client_array.push(team.client) %> 
+          <% end %>
+          
+          Clients (<%= client_array.uniq.count %>)
         </th>
       </tr>
 
-      <% @bcba.teams.each do |team| %>
+      <% client_array.uniq.each do |client| %>
       <tr>
         <td>
-          <a href="/clients/<%=team.client_id%>">
-            <%= team.client.full_name %>
+          <a href="/clients/<%= client.id %>">
+            <%= client.full_name %>
           </a>
         </td>
       </tr>

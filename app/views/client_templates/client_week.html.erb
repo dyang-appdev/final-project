@@ -29,19 +29,19 @@
         </th>
         <% end %>
 
-        <% bcba_array = [] %>
-        <% @client.teams.each do |team| %>
+        <!--<% bcba_array = [] %>-->
+        <!--<% @client.teams.each do |team| %>-->
           <!--Add BCBA into an array-->
-          <% bcba_array.push(team.bcba) %> 
-        <% end %>
+        <!--  <% bcba_array.push(team.bcba) %> -->
+        <!--<% end %>-->
         <!--Now each BCBA in this array is unique and there are no duplicates-->
-        <% bcba_array.uniq.each do |bcba| %>  
-        <th>
-          <a href="/bcbas/<%= bcba.id %>">
-            <%= bcba.full_name %>
-          </a>
-        </th>
-        <% end %>
+        <!--<% bcba_array.uniq.each do |bcba| %>  -->
+        <!--<th>-->
+        <!--  <a href="/bcbas/<%= bcba.id %>">-->
+        <!--    <%= bcba.full_name %>-->
+        <!--  </a>-->
+        <!--</th>-->
+        <!--<% end %>-->
       
       </tr>
 
@@ -82,27 +82,6 @@
               <td>
                 <form action="/create_rbt_availability" method="post">
                   <input type="hidden" name="rbt_id" value="<%= team.rbt.id %>">
-                  <input type="hidden" name="slot_id" value="<%= slot.id %>">
-                  <button class="btn btn-block btn-light">
-                    Add
-                  </button>
-                </form>
-              </td>
-            <% end %>
-          <% end %>
-
-          <% @client.teams.each do |team| %>
-            <% bcba_availability = slot.bcba_availabilities.find_by(bcba_id: team.bcba.id) %>
-            <% if bcba_availability %>
-              <td>
-                <a href="/delete_bcba_availability/<%= bcba_availability.id %>">
-                  <i class="fas fa-check"></i> <small class="text-muted">Remove</small>
-                </a>
-              </td>
-            <% else %>
-              <td>
-                <form action="/create_bcba_availability" method="post">
-                  <input type="hidden" name="bcba_id" value="<%= team.bcba.id %>">
                   <input type="hidden" name="slot_id" value="<%= slot.id %>">
                   <button class="btn btn-block btn-light">
                     Add

@@ -18,6 +18,5 @@ class Client < ApplicationRecord
   has_many :teams, :dependent => :nullify 
   has_many :client_availabilities, :dependent => :destroy 
   has_many :slots, :through => :client_availabilities, :source => :slot 
-  belongs_to :bcba
   
 end
